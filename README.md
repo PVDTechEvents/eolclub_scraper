@@ -1,6 +1,10 @@
 # EolclubScraper
 
-TODO: Write a gem description
+Scrape currently scheduled event from [EOLclub.org](http://eolclub.org/).
+Built for automating updates to [PVDTechEvents.com](http://pvdtechevents.com/).
+
+NOTE: Current implementation is extremely fragile, and will very likely break if any changes are made to EOLclub.org's layout.
+Use at your own risk.
 
 ## Installation
 
