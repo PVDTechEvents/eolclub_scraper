@@ -11,7 +11,7 @@ module EolclubScraper
     def parse(content)
       doc = Nokogiri::HTML.parse(content)
       schedule_text = doc.css('p')[1].text.split("\n")[2].split(',').last.strip.split
-      start_time, end_time = schedule_text.last.split('–')
+      start_time, end_time = schedule_text.last.split(/\W/)
 
       Event.new(
         Chronic.parse( [ schedule_text[0], schedule_text[1], start_time ].join(' ') ),
