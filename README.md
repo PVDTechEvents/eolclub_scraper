@@ -22,7 +22,12 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+require 'eolclub_scraper'
+event = EolclubScraper.scheduled_event
+event.start_time #=> 2013-12-09 18:00:00 -0500
+event.end_time #=> 2013-12-09 23:00:00 -0500
+```
 
 ## Contributing
 
