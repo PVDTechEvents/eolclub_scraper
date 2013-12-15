@@ -1,5 +1,7 @@
 # EolclubScraper
 
+[![Build Status](https://travis-ci.org/mattgillooly/eolclub_scraper.png?branch=master)](https://travis-ci.org/mattgillooly/eolclub_scraper)
+
 Scrape currently scheduled event from [EOLclub.org](http://eolclub.org/).
 Built for automating updates to [PVDTechEvents.com](http://pvdtechevents.com/).
 
