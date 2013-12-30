@@ -3,13 +3,18 @@ require 'eolclub_scraper/event_parser'
 describe EolclubScraper::EventParser do
 
   describe '#parse' do
+    let(:parsed) { subject.parse(content) }
+
     it 'parses an Event from the supplied content' do
-      expect( subject.parse(content) ).to eq(
-        EolclubScraper::Event.new(
-          Time.local(2013, 12, 9, 18, 0, 0),
-          Time.local(2013, 12, 9, 23, 0, 0)
-        )
-      )
+      expect( parsed.start_time ).to eq( Time.local(2013, 12, 9, 18, 0, 0) )
+      expect( parsed.end_time ).to eq( Time.local(2013, 12, 9, 23, 0, 0) )
+    end
+
+    it 'provides the HTML description from the scraped page' do
+      desc = parsed.description
+      expect(desc).to include("Monthly Providence, RI hacknight.")
+      expect(desc).to include("Our next meetup is")
+      expect(desc).to include("@EOLclub")
     end
   end
 
