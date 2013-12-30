@@ -10,7 +10,7 @@ module EolclubScraper
     # the same format, so that may be okay.
     def parse(content)
       doc = Nokogiri::HTML.parse(content)
-      description = doc.css('p').first(3).to_s
+      description = doc.css('p').first(3).map(&:to_html).join
       schedule_text = doc.css('p')[1].text.split("\n")[2].split(',').last.strip.split
       start_time, end_time = schedule_text.last.split(/\W/)
 
