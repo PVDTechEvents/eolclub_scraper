@@ -46,7 +46,7 @@ describe EolclubScraper::EventParser do
               <p>
                 The next <span class="summary">EOL Club</span>
                 meetup is Monday, January 13th from
-                <abbr class="dtstart" title="2014-01-13T18:00:00-05:00">6pm</abbr>&ndash;<abbr class="dtend" title="2014-01-13T23:00:00-05:00">11pm</abbr>
+                <abbr class="dtstart" title="2014-01-13T18:00:00+00:00">6pm</abbr>&ndash;<abbr class="dtend" title="2014-01-13T23:00:00+00:00">11pm</abbr>
                 at <a class="location" href="http://basicsgroup.com">Basics Group</a>.
                 Arrive whenever you can. Food and beer provided.
               </p>
