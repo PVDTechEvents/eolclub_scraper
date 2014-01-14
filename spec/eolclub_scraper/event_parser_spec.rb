@@ -16,7 +16,7 @@ describe EolclubScraper::EventParser do
     it 'provides the HTML description from the scraped page' do
       desc = parsed.description
       expect(desc).to include("Monthly Providence, RI hacknight.")
-      expect(desc).to include("Our next meetup is")
+      expect(desc).to match(/The next.*EOL Club.*meetup is/m)
       expect(desc).to include("@EOLclub")
     end
   end
