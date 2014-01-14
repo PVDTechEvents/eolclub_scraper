@@ -1,6 +1,5 @@
 require 'eolclub_scraper/event'
 require 'nokogiri'
-require 'chronic'
 
 module EolclubScraper
 
