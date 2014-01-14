@@ -6,8 +6,8 @@ describe EolclubScraper::EventParser do
     let(:parsed) { subject.parse(content) }
 
     it 'parses an Event from the supplied content' do
-      expect( parsed.start_time ).to eq( Time.local(2013, 12, 9, 18, 0, 0) )
-      expect( parsed.end_time ).to eq( Time.local(2013, 12, 9, 23, 0, 0) )
+      expect( parsed.start_time ).to eq( Time.local(2014, 12, 9, 18, 0, 0) )
+      expect( parsed.end_time ).to eq( Time.local(2014, 12, 9, 23, 0, 0) )
     end
 
     it 'provides the HTML description from the scraped page' do
