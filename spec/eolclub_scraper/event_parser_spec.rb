@@ -6,14 +6,16 @@ describe EolclubScraper::EventParser do
     let(:parsed) { subject.parse(content) }
 
     it 'parses an Event from the supplied content' do
-      expect( parsed.start_time ).to eq( Time.local(2013, 12, 9, 18, 0, 0) )
-      expect( parsed.end_time ).to eq( Time.local(2013, 12, 9, 23, 0, 0) )
+      # Explicitly convert to UTC so that we're not dependent on the timezone
+      # of the local machine.
+      expect( parsed.start_time.utc ).to eq( Time.utc(2014, 1, 13, 23, 0, 0) )
+      expect( parsed.end_time.utc ).to eq( Time.utc(2014, 1, 14, 4, 0, 0) )
     end
 
     it 'provides the HTML description from the scraped page' do
       desc = parsed.description
       expect(desc).to include("Monthly Providence, RI hacknight.")
-      expect(desc).to include("Our next meetup is")
+      expect(desc).to match(/The next.*EOL Club.*meetup is/m)
       expect(desc).to include("@EOLclub")
     end
   end
@@ -37,17 +39,20 @@ describe EolclubScraper::EventParser do
             <h1>End of Line Club</h1>
           </header>
           <section id='main'>
-            <p>
-              Monthly Providence, RI hacknight. Code, design, and collaborate
-              with other local developers to a backdrop of electronic music.
-              Bring your laptop and a project to work on.
-            </p>
-            <p>
-              Our next meetup is
-              Monday, December 9th from 6pm&ndash;11pm
-              at <a href='http://basicsgroup.com'>Basics Group</a>.
-              Arrive whenever you can. Pizza and beer provided.
-            </p>
+            <div class="vevent">
+              <p class="description">
+                Monthly Providence, RI hacknight. Code, design, and collaborate
+                with other local developers to a backdrop of electronic music.
+                Bring your laptop and a project to work on.
+              </p>
+              <p>
+                The next <span class="summary">EOL Club</span>
+                meetup is Monday, January 13th from
+                <abbr class="dtstart" title="2014-01-13T18:00:00-05:00">6pm</abbr>&ndash;<abbr class="dtend" title="2014-01-13T23:00:00-05:00">11pm</abbr>
+                at <a class="location" href="http://basicsgroup.com">Basics Group</a>.
+                Arrive whenever you can. Food and beer provided.
+              </p>
+            </div>
             <p>
               <a href="https://twitter.com/EOLclub">@EOLclub</a>
               to get more info and RSVP.
