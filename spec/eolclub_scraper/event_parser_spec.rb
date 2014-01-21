@@ -8,8 +8,8 @@ describe EolclubScraper::EventParser do
 
     it 'parses an Event from the supplied content' do
       Timecop.freeze(Time.local(2013, 12, 28)) do
-        expect( parsed.start_time ).to eq( Time.local(2014, 1, 13, 18, 0, 0) )
-        expect( parsed.end_time ).to eq( Time.local(2014, 1, 13, 23, 0, 0) )
+        expect( parsed.start_time ).to eq( Time.parse("2014-01-13T18:00:00-05:00") )
+        expect( parsed.end_time ).to eq( Time.parse("2014-01-13T23:00:00-05:00") )
       end
     end
 
