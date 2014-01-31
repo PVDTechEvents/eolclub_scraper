@@ -6,10 +6,12 @@ describe EolclubScraper::EventParser do
   describe '#parse' do
     let(:parsed) { subject.parse(content) }
 
+    let(:timezone_offset) { 5 * 60 * 60 }
+
     it 'parses an Event from the supplied content' do
       Timecop.freeze(Time.local(2013, 12, 28)) do
-        expect( parsed.start_time ).to eq( Time.local(2014, 1, 13, 18, 0, 0) )
-        expect( parsed.end_time ).to eq( Time.local(2014, 1, 13, 23, 0, 0) )
+        expect( parsed.start_time ).to eq( Time.utc(2014, 1, 13, 18, 0, 0) + timezone_offset )
+        expect( parsed.end_time ).to eq( Time.utc(2014, 1, 13, 23, 0, 0) + timezone_offset )
       end
     end
 
